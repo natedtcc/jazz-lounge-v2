@@ -1,5 +1,10 @@
 <?php
 // src/Controller/MainController.php
+/**
+ * 
+ */
+
+
 
 namespace App\Controller;
 
@@ -11,13 +16,19 @@ class MainController extends AbstractController
 {
 
 /**  
-*  @Route("/", name="home")
+*@Route("/", name="home")
 */
     public function home()
     {
-     
-      $testy = "Hey";
       return $this->render('home/home.html.twig');
-    
+    }
+
+/**
+ *@Route("/browse", name="browse")
+ */   
+  # TODO: Implement pagination
+    public function browse()
+    {
+      return $this->render('browse/browse.html.twis');
     }
 }
