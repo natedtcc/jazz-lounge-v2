@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class MainController extends AbstractController
 {
@@ -14,7 +15,8 @@ class MainController extends AbstractController
 */
     public function home()
     {
-      $test = "Hey";
+     
+      $testy = "Hey";
       return $this->render('home/home.html.twig');
     
     }
