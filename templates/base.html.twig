@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta name="description" content="Delwaware Tech ITN Server Hard Drive Assignments">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="N. Nasteff">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://natenasteff.com/jazz_lounge/includes/custom.css">
+    <meta charset="UTF-8">
+    <title>{% block title %}The Jazz Lounge 🎶{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+  </head>
+<body>
+  <div class="header_custom" style="font-family: 'Muli', serif;">
+    <h2>
+      The 
+      <font color="red">J</font>
+      <font color="blue">a</font>
+      <font color="yellow">z</font>
+      <font color="green">z</font> 
+      Lounge
+    </h2>
+  <table class="center" cellspacing="0" cellpadding="10">
+   <tr>
+      <td>
+        <a class="header" href="home.php">Home</a>
+      </td>
+      <td>
+        <a class="header" href="browse_albums.php"><b><center>Browse<br>Albums</a>
+      </td>
+      <td>
+        <a class="header" href="view_cart.php"><b><center>View<br>Cart</a>
+      </td>
+{# Check if the user is logged in to display a link to log out #}
+{% if _SESSION is defined %}
+<td><a class="header" href="logout.php" title="Logout"><b>Logout</a></td>
+{# Otherwise print a link to log in #}
+{% else %}
+<td><a class="header" href="login.php"><center><b>Login /<br> Register</a></td>
+{% endif %}
+
+      <td>
+      <a class="header" href="contact.php">Contact<br>Us</a>
+      </td>
+    </tr>
+  </table>
+  </div>
+  </div>
+  <br><br>
+  <div class="body_main">
+  
+      {% block body %}{% endblock %}
+      {% block javascripts %}{% endblock %}
+  </body>
+</html>

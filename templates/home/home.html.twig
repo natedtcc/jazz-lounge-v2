@@ -1,22 +1,6 @@
-<?php
-// src/Controller/Home.php
-namespace App\Controller;
-
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-
-include("header.html");
-
-class Home
-{
-
-/**  
-*  @Route("/home")
-*/
-    public function number(): Response
-    {
-        return new Response(
-            '<body><h3 class="display-3 text-center">
+{% extends 'base.html.twig' %}
+{% block body%}
+<h3 class="display-3 text-center">
             Welcome to the Jazz Emporium!
           </h3>
           <table class="center">
@@ -35,7 +19,5 @@ class Home
                 </p>
               </td>
             </tr>
-          </table></body>'
-        );
-    }
-}
+          </table>
+{% endblock %}
