@@ -11,12 +11,12 @@ class Home
 {
 
 /**  
-*  @Route("/index")
+*  @Route("/home")
 */
     public function number(): Response
     {
         return new Response(
-            '<h3 class="display-3 text-center">
+            '<body><h3 class="display-3 text-center">
             Welcome to the Jazz Emporium!
           </h3>
           <table class="center">
@@ -35,7 +35,7 @@ class Home
                 </p>
               </td>
             </tr>
-          </table>'
+          </table></body>'
         );
     }
 }
