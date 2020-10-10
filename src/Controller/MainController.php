@@ -1,16 +1,15 @@
 <?php
 // src/Controller/MainController.php
-/**
- * 
- */
-
-
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends AbstractController
 {
@@ -27,8 +26,13 @@ class MainController extends AbstractController
  *@Route("/browse", name="browse")
  */   
   # TODO: Implement pagination
-    public function browse()
+    public function browse(EntityManagerInterface $em, PaginatorInterface $paginator, Request $request)
     {
-      return $this->render('browse/browse.html.twis');
+      $sql_str = "SELECT artist FROM products";
+      $query = $em->createQuery($sql_str);
+
+      $pagination = $paginator->paginate($query, $request->query->getInt('page', 1), 10);
+      return $this->render('browse/browse.html.twig', ['pagination' => $pagination]);
     }
+
 }

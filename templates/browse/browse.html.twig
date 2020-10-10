@@ -1,0 +1,8 @@
+{% block body %}
+<div class="count">
+  {{ pagination.ggetTotalItemCount }}
+</div>
+{% for i in pagination %}
+  {% i.artist %}
+{% endfor %}
+{% endblock %}
