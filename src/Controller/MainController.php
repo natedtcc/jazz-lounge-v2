@@ -22,16 +22,20 @@ class MainController extends AbstractController
     }
 
 /**
- *@Route("/browse", name="browse")
- */   
-  # TODO: Implement pagination
-    public function browse(EntityManagerInterface $em, PaginatorInterface $paginator, Request $request)
+*@Route("/browse", name="browse")
+*/   
+    public function browse(
+      EntityManagerInterface $em, PaginatorInterface $paginator,
+       Request $request)
     {
       $sql_str = "SELECT a FROM App\Entity\Products a";
       $query = $em->createQuery($sql_str);
 
-      $pagination = $paginator->paginate($query, $request->query->getInt('page', 4), 10);
-      return $this->render('browse/browse.html.twig', ['pagination' => $pagination]);
+      $pagination = $paginator->paginate(
+        $query, $request->query->getInt('page', 1), 10
+      );
+      return $this->render(
+        'browse/browse.html.twig', ['pagination' => $pagination]
+      );
     }
-
 }

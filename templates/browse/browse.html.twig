@@ -1,9 +1,24 @@
-{% block body %}
+{% extends 'base.html.twig' %}
+{% block body%}
 <div class="count">
-  {{ pagination.getTotalItemCount }}
 </div>
+
+<table cellpadding="10" align="center">
 {% for product in pagination %}
-  <br>{{ product.title  }}  {{ product.artist }} ${{ product.price }}
-  <img src="https://natenasteff.com/jazz_lounge/img/{{product.image}}.jpg"style="width:120px;height:120px;">
+  <tr>
+    <td>
+      <img src="https://natenasteff.com/jazz_lounge/img/{{product.image}}.jpg"
+    style="width:120px;height:120px;">
+    </td>
+    <td>
+      {{ product.title  }}
+      <br>
+      {{ product.artist }}
+      <br>
+      ${{ product.price }}
+    </td>
+    </tr>
 {% endfor %}
+
+</table>
 {% endblock %}
