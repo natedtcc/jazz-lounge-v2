@@ -2,7 +2,8 @@
 <div class="count">
   {{ pagination.getTotalItemCount }}
 </div>
-{% for i in pagination %}
-  {{ i.artist }}
+{% for product in pagination %}
+  <br>{{ product.title  }}  {{ product.artist }} ${{ product.price }}
+  <img src="https://natenasteff.com/jazz_lounge/img/{{product.image}}.jpg"style="width:120px;height:120px;">
 {% endfor %}
 {% endblock %}
