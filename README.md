@@ -14,5 +14,22 @@ Symfony seems extremely popular nowadays, and I love the fact that they are
 completely open source. Symfony also seems to have a very active community,
 with no shortage of information on how to get the job done.
 
+As for this site, it will have the following functions:
+
+- Browse a paginated list of products (albums) pulled from a database (MySQL)
+  with links to add items to the user's shopping cart
+
+- View your shopping cart, make edits to the cart, calculate total 
+  cost (plus shipping)
+
+- Register an account on the site with email and password
+
+- Log in / log out of user account
+
+- Checkout items in cart (gather shipping/billing info)
+
+- Order processing (generate recepit, email confirmation of order)
+
+
 You can find the Symfony repo hosted right here on Github ([link](https://github.com/symfony/symfony)).
 
