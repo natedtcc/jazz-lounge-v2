@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body%}
-<div class="count">
-</div>
-
 <table cellpadding="10" align="center">
 {% for product in pagination %}
   <tr>
@@ -19,6 +16,8 @@
     </td>
     </tr>
 {% endfor %}
-
 </table>
+    <br>{{ knp_pagination_render(pagination) }}
+</div>
+
 {% endblock %}

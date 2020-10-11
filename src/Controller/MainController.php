@@ -22,7 +22,7 @@ class MainController extends AbstractController
     }
 
 /**
-*@Route("/browse", name="browse")
+*@Route("/browse/", name="browse")
 */   
     public function browse(
       EntityManagerInterface $em, PaginatorInterface $paginator,
