@@ -21,26 +21,26 @@
   <table cellspacing="20" cellpadding="0">
    <tr>
       <td>
-        <a class="links" href="home.php">Home</a>
+        <a class="links" href="{{ path("home") }}">Home</a>
       </td>
       <td>
-        <a class="links" href="127.0.0.1/browse/"><center>Browse<br>Albums</a>
+        <a class="links" href="{{ path("browse") }}"><center>Browse<br>Albums</a>
       </td>
       <td>
-        <a class="links" href="view_cart.php"><center>View<br>Cart</a>
+        <a class="links" href="{{ path("cart") }}"><center>View<br>Cart</a>
       </td>
 
 {# Check if the user is logged in to display a link to log out #}
 {% if _SESSION is defined %}
-<td><a class="links" href="logout.php" title="Logout">Logout</a></td>
+<td><a class="links" href="{{ path("logout") }}" title="Logout">Logout</a></td>
 
 {# Otherwise print a link to log in #}
 {% else %}
-<td><a class="links" href="login.php"><center>Login<br> Register</a></td>
+<td><a class="links" href="{{ path("login") }}"><center>Login<br> Register</a></td>
 
 {% endif %}
       <td>
-      <a class="links" href="contact.php">Contact</a>
+      <a class="links" href="{{ path("contact") }}">Contact</a>
       </td>
     </tr>
   </table>
