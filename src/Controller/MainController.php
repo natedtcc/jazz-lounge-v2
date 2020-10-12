@@ -43,8 +43,9 @@ class MainController extends AbstractController
     /**  
 *@Route("/cart", name="cart")
 */
-public function cart()
+  public function cart()
 {
   return $this->render('cart/cart.html.twig');
+
 }
-}
+};
