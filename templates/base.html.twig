@@ -27,20 +27,20 @@
       <a class="links" href="{{ path("browse") }}"><center>Browse<br>Albums</a>
     </td>
     <td>
-      <a class="links" href="{{ path("cart") }}"><center>View<br>Cart</a>
+      <a class="links" href="{{ path("browse") }}"><center>View<br>Cart</a>
     </td>
 
 {# Check if the user is logged in to display a link to log out #}
 {% if _SESSION is defined %}
-<td><a class="links" href="{{ path("logout") }}" title="Logout">Logout</a></td>
+<td><a class="links" href="{{ path("browse") }}" title="Logout">Logout</a></td>
 
 {# Otherwise print a link to log in #}
 {% else %}
-<td><a class="links" href="{{ path("login") }}"><center>Login<br> Register</a></td>
+<td><a class="links" href="{{ path("browse") }}"><center>Login<br> Register</a></td>
 
 {% endif %}
     <td>
-    <a class="links" href="{{ path("contact") }}">Contact</a>
+    <a class="links" href="{{ path("browse") }}">Contact</a>
     </td>
   </tr>
 </table>

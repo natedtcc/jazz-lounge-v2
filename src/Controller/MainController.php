@@ -22,7 +22,7 @@ class MainController extends AbstractController
     }
 
 /**
-*@Route("/browse/", name="browse")
+*@Route("/browse", name="browse")
 */   
     public function browse(
       EntityManagerInterface $em, PaginatorInterface $paginator,
@@ -38,4 +38,13 @@ class MainController extends AbstractController
         'browse/browse.html.twig', ['pagination' => $pagination]
       );
     }
+
+
+    /**  
+*@Route("/cart", name="cart")
+*/
+public function cart()
+{
+  return $this->render('cart/cart.html.twig');
+}
 }
