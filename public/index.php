@@ -4,6 +4,8 @@ use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Log\Logger;
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
@@ -28,3 +30,10 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+if (!isset($session)) {
+
+$session = new Session();
+$session->start();
+$session->set('key', 'value');
+echo $session->get('key');
+}

@@ -30,7 +30,7 @@ class MainController extends AbstractController
     {
       $sql_str = "SELECT a FROM App\Entity\Products a";
       $query = $em->createQuery($sql_str);
-
+      
       $pagination = $paginator->paginate(
         $query, $request->query->getInt('page', 1), 10
       );
