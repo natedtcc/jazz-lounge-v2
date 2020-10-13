@@ -18,29 +18,32 @@
     <font color="red">J</font><font color="blue">a</font><font color="yellow">z</font><font color="green">z</font> 
     Lounge
   </h2>
-  <div class="row justify-content-md-center">
-    <div class="col col-sm-1">
-      <a class="links" href="{{ path("home") }}">Home</a>
-    </div>
-    <div class="col col-sm-1">
-      <a class="links" href="{{ path("browse") }}"><center>Browse<br>Albums</a>
-    </div>
-    <div class="col col-sm-1">
-      <a class="links" href="{{ path("browse") }}"><center>View<br>Cart</a>
-    </div>
-    <div class="col col-sm-1">
-      <a class="links" href="{{ path("login") }}"><center>Login<br> Register</a>
-    </div>
-    <div class="col col-sm-1">
-      <a class="links" href="{{ path("browse") }}">Contact</a>
-    </div>
-  </div>
 </div>
-<br><br>
 <body>
+<br><br>
+  
+  <div id="navbar" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <br>
+  <a href="{{ path("home") }}">Home</a>
+  <a href="{{ path("browse") }}">Browse</a>
+  <a href="{{ path("browse") }}">Cart</a>
+  <a href="{{ path("login") }}">Login / Register</a>
+  <a href="{{ path("browse") }}">Contact</a>
+</div><br>
+<span style="font-size:30px;cursor:pointer;margin-left:15px;" onclick="openNav()">&#9776;</span>
 <div class="body_main">
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
     </div>
+      <script>
+function openNav() {
+  document.getElementById("navbar").style.width = "40%";
+}
+
+function closeNav() {
+  document.getElementById("navbar").style.width = "0";
+}
+</script>
 </body>
 </html>
