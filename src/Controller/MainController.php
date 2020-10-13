@@ -10,15 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class MainController extends AbstractController
 {
+
 
 /**  
 *@Route("/", name="home")
 */
-    public function home()
+    public function home(Request $request)
     {
-      return $this->render('home/home.html.twig');
+      
+    $creds = $request->getSession()->getName();
+      return $this->render('home/home.html.twig', ['creds' => $creds]);
     }
 
 /**
@@ -47,5 +51,13 @@ class MainController extends AbstractController
 {
   return $this->render('cart/cart.html.twig');
 
+}
+
+/**
+ * @Route("/logout", name="logout")
+ */
+public function logout(Request $request)
+{
+    return $this->render("home/home.html.twig");
 }
 };
