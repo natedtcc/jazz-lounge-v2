@@ -1,4 +1,5 @@
-{% extends creds ? "base_logged.html.twig" : "base.html.twig" %}
+{% extends creds is defined ? "base_logged.html.twig" : "base.html.twig" %}
+
 {% block body%}
 <h3 class="title_ani">
             Welcome to the Jazz Emporium!

@@ -8,7 +8,9 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class MainController extends AbstractController
@@ -18,11 +20,17 @@ class MainController extends AbstractController
 /**  
 *@Route("/", name="home")
 */
-    public function home(Request $request)
+    public function home(AuthenticationUtils $auth): Response
     {
-      
-    $creds = $request->getSession()->getName();
-      return $this->render('home/home.html.twig', ['creds' => $creds]);
+    
+
+    if ($this->getUser()){
+      $creds = $auth->getLastUsername(); 
+      return $this->render(
+        'home/home.html.twig', ['creds' => $creds]);
+      }
+    
+    return $this->render('home/home.html.twig');
     }
 
 /**
