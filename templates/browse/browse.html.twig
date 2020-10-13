@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends creds is defined ? "base_logged.html.twig" : "base.html.twig" %}
 {% set align = 'center' %}
 {% block body%}
 <table class="prod_table" cellpadding="5">
