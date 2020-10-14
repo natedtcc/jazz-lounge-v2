@@ -1,4 +1,0 @@
-language: php
-php:
-  - 7.2.9
-script: phpunit script: phpunit --configuration $DB.phpunit.xml
