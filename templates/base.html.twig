@@ -13,6 +13,7 @@
   {% block stylesheets %}{% endblock %}
 </head>
 <div class="header_custom" style="font-family: 'Muli', serif;">
+  <span style="left:0;font-size:30px;cursor:pointer;margin-left:15px;position:fixed;" onclick="openNav()">&#9776;</span>
   <h2>
     The 
     <font color="red">J</font><font color="blue">a</font><font color="yellow">z</font><font color="green">z</font> 
@@ -31,18 +32,20 @@
   <a href="{{ path("login") }}">Login / Register</a>
   <a href="{{ path("browse") }}">Contact</a>
 </div><br>
-<span style="font-size:30px;cursor:pointer;margin-left:15px;" onclick="openNav()">&#9776;</span>
-<div class="body_main">
+
+<div id="body_main" class="body_main">
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
     </div>
       <script>
 function openNav() {
-  document.getElementById("navbar").style.width = "40%";
+  document.getElementById("navbar").style.width = "300px"
+  document.getElementById("body_main").style.opacity = "0";
 }
 
 function closeNav() {
   document.getElementById("navbar").style.width = "0";
+  document.getElementById("body_main").style.opacity = "1";
 }
 </script>
 </body>
