@@ -20,15 +20,8 @@ class MainController extends AbstractController
 /**  
 *@Route("/", name="home")
 */
-    public function home(AuthenticationUtils $auth): Response
+    public function home(): Response
     {
-    
-
-    if ($this->getUser()){
-      $creds = $auth->getLastUsername(); 
-      return $this->render(
-        'home/home.html.twig', ['creds' => $creds]);
-      }
     
     return $this->render('home/home.html.twig');
     }
