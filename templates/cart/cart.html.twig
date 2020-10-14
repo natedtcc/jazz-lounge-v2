@@ -5,7 +5,9 @@
   </h3>
 
 {% for pid in cart %}
-<p>{{ pid }}
+{% for pid in pid %}
+  {{ pid }}<br>
+{% endfor %}
   
 {% endfor %}
 
