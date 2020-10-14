@@ -39,14 +39,14 @@
   <a href="{{ path("browse") }}">Contact</a>
 
 {% endif %}
-
-
 </div><br>
 
 <div id="body_main" class="body_main">
     {% block body %}{% endblock %}
+    
     {% block javascripts %}{% endblock %}
-    </div>
+    </div> 
+    </body>
       <script>
 function openNav() {
   document.getElementById("navbar").style.width = "300px"
@@ -58,5 +58,5 @@ function closeNav() {
   document.getElementById("body_main").style.opacity = "1";
 }
 </script>
-</body>
+
 </html>
