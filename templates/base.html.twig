@@ -28,14 +28,13 @@
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
   <a href="{{ path("home") }}">Home</a>
   <a href="{{ path("browse") }}">Browse</a>
-  <a href="{{ path("browse") }}">Cart</a>
+  <a href="{{ path("view_cart") }}">Cart</a>
   <a href="{{ path("logout") }}">Logout</a>
   <a href="{{ path("browse") }}">Contact</a>
 
 {% else %}
   <a href="{{ path("home") }}">Home</a>
   <a href="{{ path("browse") }}">Browse</a>
-  <a href="{{ path("browse") }}">Cart</a>
   <a href="{{ path("login") }}">Login / Register</a>
   <a href="{{ path("browse") }}">Contact</a>
 

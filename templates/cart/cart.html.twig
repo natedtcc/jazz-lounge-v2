@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block body%}
+  <h3 class="title_ani">
+    Shopping Cart
+  </h3>
+
+{% for pid in cart %}
+<p>{{ pid }}
+  
+{% endfor %}
+
+{% endblock %}
