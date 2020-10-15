@@ -23,7 +23,7 @@
 <body>
 <br><br>
 <div id="navbar" class="sidenav">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <br>
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
   <a href="{{ path("home") }}">Home</a>
