@@ -4,11 +4,24 @@
     Shopping Cart
   </h3>
 
-{% for pid in cart %}
-{% for pid in pid %}
-  {{ pid }}<br>
+<table class="prod_table" cellpadding="5">
+{% for product in cart %}
+  <tr>
+    <td>
+      <img src="https://natenasteff.com/jazz_lounge/img/{{product.image}}.jpg"
+    style="width:120px;height:120px;">
+    </td>
+    <td>
+      {{ product.title  }}
+      <br>
+      {{ product.artist }}
+      <br>
+      ${{ product.price }}
+      <br>
+      Quantity: {{ product.quantity }}
+    </td>
+    </tr>
 {% endfor %}
-  
-{% endfor %}
+</table>
 
 {% endblock %}

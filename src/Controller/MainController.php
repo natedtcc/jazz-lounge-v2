@@ -27,9 +27,13 @@ class MainController extends AbstractController
     EntityManagerInterface $em, PaginatorInterface $paginator,
       Request $request)
   {
+    /* Create product query for pagination */
+
     $sql_str = "SELECT a FROM App\Entity\Products a";
     $query = $em->createQuery($sql_str);
     
+    /* Create paginated results, then return them */
+
     $pagination = $paginator->paginate(
       $query, $request->query->getInt('page', 1), 10
     );
@@ -48,30 +52,42 @@ class MainController extends AbstractController
     if ($this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY')){
       return $this->redirect('login');
     }
-    
-    $sql_str = "SELECT a FROM App\Entity\Products a";
-    $query = $em->createQuery($sql_str);
-    
-    
-    /* Get product ID from request and add them
-    to the cart array within the user session */
-    
 
-    $cart = $request->query->getInt('pid');
+    /* Get product ID from request, create query based on product
+    ID, get the results */
+    
+    $pid = $request->query->getInt('pid');
+    
+    $product = $em->createQuery(
+      "SELECT a FROM App\Entity\Products a WHERE a.product_id = ".$pid
+      ) ->getResult();
+
+  
+    if (!$product) {
+      throw $this->createNotFoundException(
+          'No product found for product id '.$pid
+      );
+    }
+    /* Get the current shopping cart contents from the session */  
+
     $val = $this->get('session')->get('cart');
 
     /* If the item added to the cart is already in the cart,
-    increment the quantity. Otherwise, quantity is set to 1 */
+    increment the quantity. Otherwise, add the new item to
+    the cart with the data pulled from the DB */
     
-    if (isset($val[$cart]))
-      $val[$cart]['quantity']++;
+    if (isset($val[$pid])) $val[$pid]['quantity']++;
     
-      else 
-      $val[$cart] = ['pid' => 1, 'price' => 3.50,'quantity' => 1];
+    else {
+      $val[$pid] = ['title' => $product[0]->getTitle(),
+        'artist' => $product[0]->getArtist(),'price' => $product[0]->getPrice(), 
+          'image' => $product[0]->getImage(), 'quantity' => 1];
+    }
     
-    $this->get('session')->set('cart', $val);
-    return $this->redirect('browse');
+    /* Apply changes to cart session array */
 
+    $this->get('session')->set('cart', $val);
+    return $this->redirect('view_cart');
   }
 
 /**  
@@ -84,9 +100,10 @@ class MainController extends AbstractController
       return $this->redirect('login');
     }
 
+    /* Get contents of cart from session, and return cart 
+    variable to cart.html.twig */
+
     $cart = $this->get('session')->get('cart');
-    print_r($cart);
-    // $value = $session[1];
     return $this->render('cart/cart.html.twig', ['cart' => $cart]);
   }
 };
