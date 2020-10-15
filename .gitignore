@@ -8,6 +8,7 @@
 /var/
 /vendor/
 .env
+composer.phar
 ###< symfony/framework-bundle ###
 
 
