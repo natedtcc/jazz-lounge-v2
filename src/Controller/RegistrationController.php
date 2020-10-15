@@ -11,41 +11,41 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
-    private $passwordEncoder;
+  private $passwordEncoder;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $this->passwordEncoder = $passwordEncoder;
+  public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+  {
+    $this->passwordEncoder = $passwordEncoder;
+  }
+
+/**
+*@Route("/register", name="register")
+*/
+  public function index(Request $request)
+  {
+    $user = new User();
+
+    $form = $this->createForm(UserType::class, $user);
+
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+      // Encode the new users password
+      $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
+
+      // Set their role
+      $user->setRoles(['ROLE_USER']);
+
+      // Save
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($user);
+      $em->flush();
+
+      return $this->redirectToRoute('login');
     }
 
-    /**
-     * @Route("/register", name="register")
-     */
-    public function index(Request $request)
-    {
-        $user = new User();
-
-        $form = $this->createForm(UserType::class, $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Encode the new users password
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
-
-            // Set their role
-            $user->setRoles(['ROLE_USER']);
-
-            // Save
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('login');
-        }
-
-        return $this->render('security/register.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
+    return $this->render('security/register.html.twig', [
+      'form' => $form->createView(),
+    ]);
+  }
 }
