@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 class ViewCartController extends AbstractController
 {
     /**  
     *@Route("/view_cart", name="view_cart")
     */
-    public function view_cart(Request $request)
+    public function view_cart()
     {
         /* If the user is not logged in, redirect them to login */
         if ($this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY')){
