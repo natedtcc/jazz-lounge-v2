@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact us | thejazzlounge.com {% endblock %}
 
 {% block body %}
   <h3 class="title_ani">
-   Registration
+   Contact us
   </h3>
-<div class="container" style="position: relative; width:350px; margin-left: auto; margin-right:auto;">
+<div class="container" style="position: relative; width:500px; margin-left: auto; margin-right:auto;">
 
   <div class="row justify-content-sm-center">
     <div class="col-sm">
@@ -14,12 +14,23 @@
         <div class="card-body">
           {{ form_start(form) }}
           <div class="form_group">
-            <div class="col-sm">{{ form_row(form.name, {'label' : 'Full Name', 'attr': {'class': 'form-control'}}) }}
+            <div class="col-sm">
+              {% if user is defined %}
+                {{ form_row(form.name, {'label' : 'Full Name', 'attr': {'class': 'form-control', 'value': user.getName()}}) }}
+              {% else %}
+                {{ form_row(form.name, {'label' : 'Full Name', 'attr': {'class': 'form-control'}}) }}
+              {% endif %}
+              
+              
           </div>
           </div>
           <div class="form_group">
             <div class="col">
-              {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+              {% if user is defined %}
+                {{ form_row(form.email, {'attr': {'class': 'form-control', 'value': user.getEmail()}}) }}
+              {% else %}
+                {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+              {% endif %}
             </div>
           </div>
           <div class="form_group">

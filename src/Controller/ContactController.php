@@ -14,14 +14,15 @@ class ContactController extends AbstractController
      */
     public function index()
     {
-
         $message = new ContactForm();
 
-        $form = $this->createForm(UserType::class, $message);
+        $form = $this->createForm(ContactFormType::class, $message);
+        $user = $this->getUser();
+        return $user ?
+            $this->render('contact/contact.html.twig',
+                ['user' => $user, 'form' => $form->createView()]) : 
+            $this->render('contact/contact.html.twig',
+                ['form' => $form->createView()]);
 
-        return $this->render('contact/index.html.twig', [
-            'form' => $form->createView()
-        
-        ]);
     }
 }

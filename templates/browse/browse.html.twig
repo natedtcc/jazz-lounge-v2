@@ -1,6 +1,9 @@
 {% extends creds is defined ? "base_logged.html.twig" : "base.html.twig" %}
 {% set align = 'center' %}
 {% block body%}
+<h3 class="title_ani">
+   Browse
+</h3><br><br>
 <table class="prod_table" cellpadding="5">
 {% for product in pagination %}
   <tr>
