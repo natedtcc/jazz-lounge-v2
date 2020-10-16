@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="description" content="Delwaware Tech ITN Server Hard Drive Assignments">
+  <meta name="description" content="The Jazz Lounge Album Store Music Vinyl">
   <meta name="viewport" content="width=device-width">
   <meta name="author" content="N. Nasteff">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://natenasteff.com/jazz_lounge/includes/custom2.css">
   <meta charset="UTF-8">
-  <title>{% block title %}The Jazz Lounge 🎶{% endblock %}</title>
+  <title>{% block title %}The Jazz Lounge{% endblock %}</title>
   {% block stylesheets %}{% endblock %}
 </head>
 <div class="header_custom" style="font-family: 'Muli', serif;">
@@ -39,11 +39,10 @@
   <a href="{{ path("contact") }}">Contact</a>
 
 {% endif %}
-</div><br>
-
+</div>
+{% block alert %} {% endblock %}
 <div id="body_main" class="body_main">
     {% block body %}{% endblock %}
-    
     {% block javascripts %}{% endblock %}
     </div> 
     </body>
