@@ -29,7 +29,8 @@ class ContactController extends AbstractController
                 'message' => "Your message has been sent! Please allow us 1-2 business days to respond.",
                 'type' => "custom_alert alert-success"
             ];
-            return $this->redirectToRoute('home');
+            $this->redirect('home');
+            return $this->render('/home/home.html.twig', ['message', $message]);
         } else if ($form->isSubmitted() && !$form->isValid()) {
             $message = [
                 'message' => "There was an error sending your message. Please try again.",
