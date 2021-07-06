@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Products;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,6 +15,11 @@ class HomeController extends AbstractController
 */
   public function home()
   {
-    return $this->render('home/home.html.twig');
+    $products = $this->getDoctrine()
+    ->getRepository(Products::class)
+    ->findAllRandomly();
+    return $this->render(
+      'home/home.html.twig', ['carousel' => $products]
+    );
   }
 };

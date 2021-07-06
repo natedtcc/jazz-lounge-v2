@@ -10,7 +10,7 @@
     Welcome to the Jazz Lounge!
   </h3>
 
-  <div class="container" style="width:300px">
+  <div class="container" style="width:400px">
     <div class="row">
       <div class="col"><p class="lead" style="text-indent: 8px; text-align: justify;text-justify: inter-word;">
       <br>
@@ -27,5 +27,25 @@
         </p>
       </div>
     </div>
+    </div>
+    <div class="container" style="width:450px;">
+      <div class="products">
+{% for product in carousel %}
+      <div><img src="https://natenasteff.com/jazz_lounge/img/{{product.image}}.jpg"
+    style="width:120px;height:120px;">
+    </div>
+{% endfor %}
   </div>
+</div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.products').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+      });
+    });
+  </script>
+
 {% endblock %}

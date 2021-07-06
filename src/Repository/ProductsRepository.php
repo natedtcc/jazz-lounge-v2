@@ -47,4 +47,21 @@ class ProductsRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // /**
+    //  * @return $query 
+    //  * Products[] Returns an array of Products objects
+
+    public function findAllRandomly(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Products p'
+        );
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 }

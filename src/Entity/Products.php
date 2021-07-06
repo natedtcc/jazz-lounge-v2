@@ -33,6 +33,11 @@ class Products
     private $artist;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $long_desc;
+
+    /**
      * @ORM\Column(type="decimal", precision=4, scale=2)
      */
     private $price;
@@ -103,6 +108,18 @@ class Products
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLong(): ?string
+    {
+        return $this->long_desc;
+    }
+
+    public function setLong(string $long_desc): self
+    {
+        $this->long_desc = $long_desc;
 
         return $this;
     }
