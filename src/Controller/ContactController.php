@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\CarouselService;
 use App\Entity\ContactForm;
 use App\Form\ContactFormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, CarouselService $carouselService): Response
     {
 
         $message = new ContactForm();
@@ -25,12 +26,17 @@ class ContactController extends AbstractController
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $carousel = $carouselService->getCarouselItems();
             $message = [
                 'message' => "Your message has been sent! Please allow us 1-2 business days to respond.",
                 'type' => "custom_alert alert-success"
             ];
-            $this->redirect('home');
-            return $this->render('/home/home.html.twig', ['message', $message]);
+            $this->redirectToRoute('home');
+            return $this->render('/home/home.html.twig', 
+            [
+                'message' => $message,
+                'carousel' => $carousel
+            ]);
         } else if ($form->isSubmitted() && !$form->isValid()) {
             $message = [
                 'message' => "There was an error sending your message. Please try again.",

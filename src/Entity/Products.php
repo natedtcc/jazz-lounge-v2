@@ -38,6 +38,11 @@ class Products
     private $long_desc;
 
     /**
+     * @ORM\Column(type="string", length=60)
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="decimal", precision=4, scale=2)
      */
     private $price;
@@ -84,6 +89,18 @@ class Products
     public function setArtist(string $artist): self
     {
         $this->artist = $artist;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
